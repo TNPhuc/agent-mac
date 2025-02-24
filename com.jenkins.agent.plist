@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.jenkins.agent</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/bin/bash</string>
+      <string>-c</string>
+      <string>exec /usr/bin/java -jar /Users/YOUR_USER/jenkins-agent/agent.jar -Url http://JENKINS_MASTER_URL/computer/AGENT_NAME/ -secret $(cat /Users/YOUR_USER/jenkins-agent/secret.key) -workDir /Users/YOUR_USER/jenkins-agent -webSocket</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/YOUR_USER/jenkins-agent/agent.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/YOUR_USER/jenkins-agent/agent-error.log</string>
+  </dict>
+</plist>
