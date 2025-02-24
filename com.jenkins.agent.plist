@@ -7,9 +7,18 @@
 
     <key>ProgramArguments</key>
     <array>
-      <string>/bin/bash</string>
-      <string>-c</string>
-      <string>exec /usr/bin/java -jar /Users/YOUR_USER/jenkins-agent/agent.jar -Url http://JENKINS_MASTER_URL/computer/AGENT_NAME/ -secret $(cat /Users/YOUR_USER/jenkins-agent/secret.key) -workDir /Users/YOUR_USER/jenkins-agent -webSocket</string>
+      <string>/usr/bin/java</string>
+      <string>-jar</string>
+      <string>/Users/jenkins/Jenkins-agent/agent.jar</string>
+      <string>-url</string>
+      <string>https://jenkins.fptmedicare.vn/</string>
+      <string>-secret</string>
+      <string>@/Users/jenkins/Jenkins-agent/secret.key</string>
+      <string>-name</string>
+      <string>Agent-Mac</string>
+      <string>-webSocket</string>
+      <string>-workDir</string>
+      <string>/Users/jenkins/Jenkins-agent</string>
     </array>
 
     <key>RunAtLoad</key>
@@ -19,9 +28,9 @@
     <true/>
 
     <key>StandardOutPath</key>
-    <string>/Users/YOUR_USER/jenkins-agent/agent.log</string>
+    <string>/Users/jenkins/Jenkins-agent/agent.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/Users/YOUR_USER/jenkins-agent/agent-error.log</string>
+    <string>/Users/jenkins/Jenkins-agent/agent-error.log</string>
   </dict>
 </plist>
