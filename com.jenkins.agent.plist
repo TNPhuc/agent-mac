@@ -13,7 +13,7 @@
       <string>-url</string>
       <string>https://jenkins.fptmedicare.vn/</string>
       <string>-secret</string>
-      <string>@/Users/jenkins/Jenkins-agent/secret.key</string>
+      <string>@/Users/jenkins/Jenkins-agent/secret-file</string>
       <string>-name</string>
       <string>Agent-Mac</string>
       <string>-webSocket</string>
@@ -25,7 +25,12 @@
     <true/>
 
     <key>KeepAlive</key>
-    <true/>
+    <dict>
+      <key>SuccessfulExit</key>
+      <false/>
+      <key>NetworkState</key>
+      <true/>
+    </dict>
 
     <key>StandardOutPath</key>
     <string>/Users/jenkins/Jenkins-agent/agent.log</string>
