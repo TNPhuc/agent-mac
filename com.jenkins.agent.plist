@@ -1,44 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-  <dict>
+<dict>
+    <!-- Định danh của dịch vụ -->
     <key>Label</key>
     <string>com.jenkins.agent</string>
 
-    <key>ProgramArguments</key>
-    <array>
-      <string>/usr/bin/java</string>
-      <string>-Dcom.sun.net.ssl.checkRevocation=false</string>
-      <string>-Dcom.cloudbees.plugins.credentials.UserRemoteCertificateSslSocketFactory.noverify=true</string>
-      <string>-Dhudson.model.ParametersAction.keepUndefinedParameters=true</string>
-      <string>-jar</string>
-      <string>/Users/jenkins/Jenkins-agent/agent.jar</string>
-      <string>-url</string>
-      <string>https://jenkins.fptmedicare.vn/</string>
-      <string>-secret</string>
-      <string>@/Users/jenkins/Jenkins-agent/secret-file</string>
-      <string>-name</string>
-      <string>Agent-Mac</string>
-      <string>-webSocket</string>
-      <string>-workDir</string>
-      <string>/Users/jenkins/Jenkins-agent</string>
-    </array>
+    <!-- Đảm bảo tiến trình bị xóa khi máy tắt -->
+    <key>AbandonProcessGroup</key>
+    <true/>
 
+    <!-- Ngăn tiến trình giữ lại nếu đã thoát trước khi máy tắt -->
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+
+    <!-- Tự động chạy khi máy bật lại -->
     <key>RunAtLoad</key>
     <true/>
 
-    <key>KeepAlive</key>
-    <dict>
-      <key>SuccessfulExit</key>
-      <false/>
-      <key>NetworkState</key>
-      <true/>
-    </dict>
+    <!-- Chạy lại tiến trình nếu bị lỗi -->
+    <key>ThrottleInterval</key>
+    <integer>30</integer>
 
+    <!-- Chạy dưới user 'jenkins' (nếu cần) -->
+    <key>UserName</key>
+    <string>jenkins</string>
+
+    <!-- Lệnh khởi chạy Jenkins agent -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/java</string>
+        <string>-jar</string>
+        <string>/Users/jenkins/Jenkins-agent/agent.jar</string>
+        <string>-url</string>
+        <string>https://jenkins.fptmedicare.vn/</string>
+        <string>-secret</string>
+        <string>@/Users/jenkins/Jenkins-agent/secret-file</string>
+        <string>-name</string>
+        <string>Agent-Mac</string>
+        <string>-webSocket</string>
+        <string>-workDir</string>
+        <string>/Users/jenkins/Jenkins-agent</string>
+    </array>
+
+    <!-- Ghi log để kiểm tra lỗi -->
     <key>StandardOutPath</key>
-    <string>/Users/jenkins/Jenkins-agent/agent.log</string>
-
+    <string>/Users/jenkins/Jenkins-agent/jenkins-agent.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/jenkins/Jenkins-agent/agent-error.log</string>
-  </dict>
+    <string>/Users/jenkins/Jenkins-agent/jenkins-agent-error.log</string>
+</dict>
 </plist>
