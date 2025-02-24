@@ -8,6 +8,10 @@
     <key>ProgramArguments</key>
     <array>
       <string>/usr/bin/java</string>
+      <string>-Dcom.sun.net.ssl.checkRevocation=false</string>
+      <string>-Djavax.net.ssl.trustStoreType=Windows-ROOT</string>
+      <string>-Dcom.cloudbees.plugins.credentials.UserRemoteCertificateSslSocketFactory.noverify=true</string>
+      <string>-Dhudson.model.ParametersAction.keepUndefinedParameters=true</string>
       <string>-jar</string>
       <string>/Users/jenkins/Jenkins-agent/agent.jar</string>
       <string>-url</string>
